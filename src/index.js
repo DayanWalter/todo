@@ -1,3 +1,2 @@
 import "./styles/main.css";
-
-console.log(exportExample());
+import "@fortawesome/fontawesome-free/css/all.css";

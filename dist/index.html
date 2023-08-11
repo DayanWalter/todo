@@ -4,6 +4,164 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo-App</title>
-  <script defer src="bundle.0cb4bada23383548bbc9.js"></script></head>
-  <body></body>
+  <script defer src="bundle.95717ec746f85a92eb2b.js"></script></head>
+  <body>
+    <div class="site">
+      <header class="header">
+        <div class="logo">
+          <i class="fa-solid fa-check fa-2xl"></i>
+          <h1>Todo App</h1>
+        </div>
+      </header>
+      <main class="main">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-top-link">
+              <i class="fa-solid fa-inbox" title="Inbox"></i>
+              <div class="inbox">Inbox</div>
+            </div>
+            <div class="sidebar-top-link">
+              <i class="fa-solid fa-calendar-day" title="Today"></i>
+              <div class="today">Today</div>
+            </div>
+            <div class="sidebar-top-link">
+              <i class="fa-solid fa-calendar-week" title="Next Week"></i>
+              <div class="next-week">Next Week</div>
+            </div>
+          </div>
+          <div class="sidebar-bottom">
+            <div class="sidebar-bottom-header">
+              <h3>Projects</h3>
+              <i class="fa-solid fa-plus" title="New Project"></i>
+            </div>
+            <form class="project-form active">
+              <input
+                type="text"
+                id="title"
+                placeholder="Title"
+                required
+                maxlength="30"
+              />
+              <button class="add-project-button">Add</button>
+            </form>
+            <div class="sidebar-bottom-container">
+              <!-- Example Projects -->
+              <div class="sidebar-bottom-container-project">
+                <i class="fa-solid fa-list-check"></i>
+                <p>Example Project</p>
+              </div>
+              <div class="sidebar-bottom-container-project">
+                <i class="fa-solid fa-list-check"></i>
+                <p>Another Example</p>
+              </div>
+              <div class="sidebar-bottom-container-project">
+                <i class="fa-solid fa-list-check"></i>
+                <p>A Very Very Long Example</p>
+              </div>
+              <div class="sidebar-bottom-container-project">
+                <i class="fa-solid fa-list-check"></i>
+                <p>Shorty</p>
+              </div>
+              <!-- End Of Example Projects -->
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <h3>Project Title</h3>
+
+          <button class="content-new-task" title="New Task">
+            <i class="fa-solid fa-plus"></i>New Task
+          </button>
+          <div class="content-task-container">
+            <!-- Example Tasks -->
+            <div class="content-task">
+              <label>
+                <input type="checkbox" />
+                <span class="bubble task"></span>
+              </label>
+
+              <div class="content-task-title">
+                <input type="text" value="Example Task" />
+              </div>
+
+              <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </div>
+            </div>
+            <div class="content-task">
+              <label>
+                <input type="checkbox" />
+                <span class="bubble task"></span>
+              </label>
+
+              <div class="content-task-title">
+                <input type="text" value="Wash the dishes" />
+              </div>
+
+              <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </div>
+            </div>
+            <div class="content-task">
+              <label>
+                <input type="checkbox" />
+                <span class="bubble task"></span>
+              </label>
+
+              <div class="content-task-title">
+                <input type="text" value="Pet a cat" />
+              </div>
+
+              <div class="actions">
+                <button class="edit">Edit</button>
+                <button class="delete">Delete</button>
+              </div>
+            </div>
+            <!-- End Example Task -->
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <p>Copyright © 2023 SynthCyraX</p>
+        <a href="https://github.com/synthcyrax" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </footer>
+      <div class="modal" id="addTaskModal">
+        <form class="add-task-form" id="addTaskForm">
+          <h3>Add new Task</h3>
+          <input
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+            maxlength="30"
+          />
+
+          <input
+            type="text"
+            id="description"
+            placeholder="Description"
+            required
+            maxlength="100"
+          />
+          <input type="date" id="date" required />
+
+          <select name="priority">
+            <option value="priority" selected hidden disabled>
+              Choose Priority
+            </option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+
+          <button class="add-new-task-btn" type="submit">Submit</button>
+        </form>
+      </div>
+      <div class="overlay" id="overlay"></div>
+    </div>
+  </body>
 </html>

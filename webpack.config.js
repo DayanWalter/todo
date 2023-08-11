@@ -29,6 +29,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Todo-App",
       template: "src/template.html",
+      favicon: "src/styles/favicon.ico",
     }),
   ],
 };
