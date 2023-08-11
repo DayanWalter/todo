@@ -146,7 +146,37 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n/* harmony import */ var _fortawesome_fontawesome_free_css_all_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.css */ \"./node_modules/@fortawesome/fontawesome-free/css/all.css\");\n\n\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ \"./src/styles/main.css\");\n/* harmony import */ var _fortawesome_fontawesome_free_css_all_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/fontawesome-free/css/all.css */ \"./node_modules/@fortawesome/fontawesome-free/css/all.css\");\n/* harmony import */ var _modules_Task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Task */ \"./src/modules/Task.js\");\n/* harmony import */ var _modules_Project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Project */ \"./src/modules/Project.js\");\n/* harmony import */ var _modules_Storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Storage */ \"./src/modules/Storage.js\");\n\n\n\n\n\n\n(0,_modules_Storage__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n// document.addEventListener(\"DOMContentLoaded\", UI.loadHomepage);\n\n// const project1 = new Project(\"First Project\");\n// console.log(project1);\n// console.log(project1.tasks);\n// const task1 = new Task(\"TaskTitle\", \"TaskDesc\", \"20/03/2023\", \"Low\");\n// const task2 = new Task(\"Task2\", \"Task-Desc2\", \"25/03/2023\", \"High\");\n\n// project1.addTask(task1);\n// project1.addTask(task2);\n\n// console.table(project1.tasks);\n\n// project1.deleteTask(\"Task2\");\n// console.table(project1.tasks);\n\n// let tasks = JSON.parse(localStorage.getItem(\"tasks\")) || [];\n\n// let project1_serialized = JSON.stringify(project1);\n// localStorage.setItem(\"Project 1\", project1_serialized);\n// console.log(localStorage);\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Project.js":
+/*!********************************!*\
+  !*** ./src/modules/Project.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Project)\n/* harmony export */ });\nclass Project {\n  constructor(name) {\n    this.name = name;\n    this.tasks = [];\n  }\n  setName(name) {\n    this.name = name;\n  }\n  getName() {\n    return this.name;\n  }\n  getTasks() {\n    return this.tasks;\n  }\n  addTask(task) {\n    return this.tasks.push(task);\n  }\n  deleteTask(taskName) {\n    this.tasks = this.tasks.filter((task) => task.name !== taskName);\n  }\n}\n\n\n//# sourceURL=webpack://todo/./src/modules/Project.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Storage.js":
+/*!********************************!*\
+  !*** ./src/modules/Storage.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Storage)\n/* harmony export */ });\n/* harmony import */ var _Project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Project */ \"./src/modules/Project.js\");\n/* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Task */ \"./src/modules/Task.js\");\n\n\n\nfunction Storage() {\n  let projects = JSON.parse(localStorage.getItem(\"projects\")) || [];\n\n  const addProjectButton = document.getElementById(\"addProjectButton\");\n\n  addProjectButton.addEventListener(\"click\", (e) => {\n    e.preventDefault();\n    let inputProjectName = document.getElementById(\"projectName\").value;\n    const project = new _Project__WEBPACK_IMPORTED_MODULE_0__[\"default\"](inputProjectName);\n\n    projects.push(project);\n\n    localStorage.setItem(\"projects\", JSON.stringify(projects));\n\n    const projectContainer = document.getElementById(\"projectContainer\");\n    projectContainer.innerHTML += `\n    <div class=\"sidebar-bottom-container-project\">\n        <i class=\"fa-solid fa-list-check\"></i>\n        <p>${inputProjectName}</p>\n    </div>`;\n    console.log(projects);\n  });\n  //   let inputTaskName = document.getElementById(\"taskName\").value;\n\n  //   const task = new Task(inputTaskName);\n  //   project.addTask(task);\n}\n\n\n//# sourceURL=webpack://todo/./src/modules/Storage.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Task.js":
+/*!*****************************!*\
+  !*** ./src/modules/Task.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Task)\n/* harmony export */ });\nclass Task {\n  constructor(name, description, dueDate, priority) {\n    this.name = name;\n    this.description = description;\n    this.dueDate = dueDate;\n    this.priority = priority;\n  }\n\n  setName(name) {\n    this.name = name;\n  }\n\n  getName() {\n    return this.name;\n  }\n\n  setDescription(description) {\n    this.description = description;\n  }\n\n  getDescription() {\n    return this.description;\n  }\n\n  setDate(dueDate) {\n    this.dueDate = dueDate;\n  }\n  getDate() {\n    return this.dueDate;\n  }\n\n  setPriority(priority) {\n    this.priority = priority;\n  }\n\n  getPriority() {\n    return this.priority;\n  }\n}\n\n\n//# sourceURL=webpack://todo/./src/modules/Task.js?");
 
 /***/ }),
 

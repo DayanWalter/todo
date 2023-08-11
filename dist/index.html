@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo-App</title>
-  <script defer src="bundle.95717ec746f85a92eb2b.js"></script></head>
+  <link rel="icon" href="favicon.ico"><script defer src="bundle.eef4f4ac2848b2a6fac7.js"></script></head>
   <body>
     <div class="site">
       <header class="header">
@@ -37,14 +37,17 @@
             <form class="project-form active">
               <input
                 type="text"
-                id="title"
+                id="projectName"
                 placeholder="Title"
+                value="ProjectNameExample"
                 required
                 maxlength="30"
               />
-              <button class="add-project-button">Add</button>
+              <button class="add-project-button" id="addProjectButton">
+                Add
+              </button>
             </form>
-            <div class="sidebar-bottom-container">
+            <div class="sidebar-bottom-container" id="projectContainer">
               <!-- Example Projects -->
               <div class="sidebar-bottom-container-project">
                 <i class="fa-solid fa-list-check"></i>
@@ -129,13 +132,14 @@
           <i class="fa-brands fa-github"></i>
         </a>
       </footer>
-      <div class="modal" id="addTaskModal">
+      <div class="modal active" id="addTaskModal">
         <form class="add-task-form" id="addTaskForm">
           <h3>Add new Task</h3>
           <input
             type="text"
-            id="title"
+            id="taskName"
             placeholder="Title"
+            value="TaskName"
             required
             maxlength="30"
           />
