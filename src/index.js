@@ -3,8 +3,10 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import Task from "./modules/Task";
 import Project from "./modules/Project";
 import Storage from "./modules/Storage";
+import UI from "./modules/UI";
 
 Storage();
+UI();
 // document.addEventListener("DOMContentLoaded", UI.loadHomepage);
 
 // const project1 = new Project("First Project");

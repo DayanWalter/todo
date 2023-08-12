@@ -5,7 +5,7 @@ export default function Storage() {
   let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
   const addProjectButton = document.getElementById("addProjectButton");
-
+  // add a project via input to the html and store it inside local storage
   addProjectButton.addEventListener("click", (e) => {
     e.preventDefault();
     let inputProjectName = document.getElementById("projectName").value;
