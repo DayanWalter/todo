@@ -1,13 +1,14 @@
 import Project from "./Project";
-import Task from "./Task";
+import UI from "./UI";
 
-export default function Storage() {
-  let projects = JSON.parse(localStorage.getItem("projects")) || [];
+export default class Storage {
+  //get and set items from the local storage
 
-  const addProjectButton = document.getElementById("addProjectButton");
-  // add a project via input to the html and store it inside local storage
-  addProjectButton.addEventListener("click", (e) => {
+  static addProject(e) {
     e.preventDefault();
+
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
     let inputProjectName = document.getElementById("projectName").value;
     const project = new Project(inputProjectName);
 
@@ -15,16 +16,16 @@ export default function Storage() {
 
     localStorage.setItem("projects", JSON.stringify(projects));
 
-    const projectContainer = document.getElementById("projectContainer");
-    projectContainer.innerHTML += `
-    <div class="sidebar-bottom-container-project">
-        <i class="fa-solid fa-list-check"></i>
-        <p>${inputProjectName}</p>
-    </div>`;
-    console.log(projects);
-  });
-  //   let inputTaskName = document.getElementById("taskName").value;
+    UI.displayProjects();
+  }
 
-  //   const task = new Task(inputTaskName);
-  //   project.addTask(task);
+  static deleteProject(index) {
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    if (index >= 0 && index < projects.length) {
+      projects.splice(index, 1);
+      localStorage.setItem("projects", JSON.stringify(projects));
+
+      UI.displayProjects();
+    }
+  }
 }

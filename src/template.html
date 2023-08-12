@@ -39,21 +39,25 @@
                 type="text"
                 id="projectName"
                 placeholder="Title"
-                value="ProjectNameExample"
+                value="Project"
                 required
-                maxlength="30"
+                maxlength="20"
               />
               <button class="add-project-button" id="addProjectButton">
-                Add
+                Add Project
               </button>
             </form>
             <div class="sidebar-bottom-container" id="projectContainer">
               <!-- Example Projects -->
               <div class="sidebar-bottom-container-project">
                 <i class="fa-solid fa-list-check"></i>
-                <p>Example Project</p>
+                <input type="text" value="12345678901234567890" readonly />
+
+                <button title="Delete Project" class="delete-project-button">
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </button>
               </div>
-              <div class="sidebar-bottom-container-project">
+              <!-- <div class="sidebar-bottom-container-project">
                 <i class="fa-solid fa-list-check"></i>
                 <p>Another Example</p>
               </div>
@@ -64,7 +68,7 @@
               <div class="sidebar-bottom-container-project">
                 <i class="fa-solid fa-list-check"></i>
                 <p>Shorty</p>
-              </div>
+              </div> -->
               <!-- End Of Example Projects -->
             </div>
           </div>
@@ -132,7 +136,7 @@
           <i class="fa-brands fa-github"></i>
         </a>
       </footer>
-      <div class="modal active" id="addTaskModal">
+      <div class="modal" id="addTaskModal">
         <form class="add-task-form" id="addTaskForm">
           <h3>Add new Task</h3>
           <input

@@ -38,6 +38,9 @@ select {
   background: none;
   cursor: initial;
 }
+input[type="text"] {
+  font-size: 1rem;
+}
 
 input[type="checkbox"] {
   display: none;
@@ -98,13 +101,9 @@ main .sidebar .sidebar-top .sidebar-top-link {
 main .sidebar .sidebar-top .sidebar-top-link:hover {
   background-color: var(--dark-hover-color);
 }
-
+main .sidebar .sidebar-bottom,
 main .sidebar .sidebar-top {
-  padding: 50px;
-}
-
-main .sidebar .sidebar-bottom {
-  padding: 50px;
+  padding: 15px;
 }
 
 main .sidebar-bottom .sidebar-bottom-header {
@@ -127,13 +126,15 @@ main .sidebar-bottom .sidebar-bottom-header i:hover {
 main .sidebar .sidebar-bottom .project-form {
   display: none;
   gap: 15px;
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 15px;
+  border-radius: 5px;
   box-shadow: var(--shadow);
 }
 
 main .sidebar .sidebar-bottom .project-form.active {
   display: flex;
+  justify-content: space-between;
 }
 
 .project-form input,
@@ -159,19 +160,28 @@ main .sidebar .sidebar-bottom .project-form.active {
 
 main .sidebar .sidebar-bottom-container .sidebar-bottom-container-project {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
   box-shadow: var(--shadow);
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 15px;
-  transition: transform 0.3s ease;
+  transition: transform 0.1s ease;
 }
 
 main
   .sidebar
   .sidebar-bottom-container
   .sidebar-bottom-container-project:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.sidebar-bottom-container-project button {
+  color: var(--delete);
+}
+
+.sidebar-bottom-container-project button:hover {
+  color: red;
   cursor: pointer;
 }
 

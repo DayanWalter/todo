@@ -1,25 +1,26 @@
-export default function UI() {
+export default class UI {
+  //get items from Storage and display them in the UI
+
   //Display Projects in ProjectContainer
-  //Select the ProjectContainer
-  const projectContainer = document.getElementById("projectContainer");
-  //Delete everything inside the ProjectContainer with innerHTML =""
-  projectContainer.innerHTML = "";
-  //getItem get the project out of the projects in local storage
-  let projects = JSON.parse(localStorage.getItem("projects")) || [];
-  //   console.log("works");
-  //create for every project in the projectarray the html
-  projects.forEach((project) => {
-    // console.log("works");
+  static displayProjects() {
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    const projectContainer = document.getElementById("projectContainer");
+    projectContainer.innerHTML = "";
 
-    let projectName = project.name;
+    projects.forEach((project) => {
+      let projectName = project.name;
 
-    projectContainer.innerHTML += `
-    <div class="sidebar-bottom-container-project">
-        <i class="fa-solid fa-list-check"></i>
-        <p>${projectName}</p>
+      projectContainer.innerHTML += `
+      <div class="sidebar-bottom-container-project">
+      <i class="fa-solid fa-list-check"></i>
+      <input type="text" value="${projectName}" readonly />
+
+      <button title="Delete Project" class="delete-project-button" data-index="${projects.indexOf(
+        project
+      )}">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </button>
     </div>`;
-    // console.log(project.name);
-    console.log(project);
-  });
-  //(with forEach?)
+    });
+  }
 }
