@@ -19,13 +19,19 @@ export default class Storage {
     UI.displayProjects();
   }
 
-  static deleteProject(index) {
-    let projects = JSON.parse(localStorage.getItem("projects")) || [];
-    if (index >= 0 && index < projects.length) {
-      projects.splice(index, 1);
-      localStorage.setItem("projects", JSON.stringify(projects));
+  static deleteProject(e) {
+    if (e.target.closest(".delete-project-button")) {
+      const index = parseInt(
+        e.target.closest(".delete-project-button").getAttribute("data-index")
+      );
 
-      UI.displayProjects();
+      let projects = JSON.parse(localStorage.getItem("projects")) || [];
+      if (index >= 0 && index < projects.length) {
+        projects.splice(index, 1);
+        localStorage.setItem("projects", JSON.stringify(projects));
+
+        UI.displayProjects();
+      }
     }
   }
 }

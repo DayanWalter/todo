@@ -14,14 +14,5 @@ addProjectButton.addEventListener("click", Storage.addProject);
 
 const projectContainer = document.getElementById("projectContainer");
 
-projectContainer.addEventListener("click", (event) => {
-  console.log(event);
-
-  if (event.target.closest(".delete-project-button")) {
-    const index = parseInt(
-      event.target.closest(".delete-project-button").getAttribute("data-index")
-    );
-    Storage.deleteProject(index);
-  }
-});
+projectContainer.addEventListener("click", Storage.deleteProject);
 // document.addEventListener("DOMContentLoaded", UI.loadHomepage);
