@@ -1,3 +1,4 @@
+import { format, parseISO } from "date-fns";
 import Storage from "./Storage";
 
 export default class UI {
@@ -43,6 +44,15 @@ export default class UI {
         project.tasks.forEach((task) => {
           const taskName = task.name;
 
+          console.log(task.dueDate);
+
+          let dueDate = task.dueDate;
+
+          if (task.dueDate !== "") {
+            dueDate = format(parseISO(task.dueDate), "dd.MM.yyyy");
+          } else {
+            dueDate = "No date added";
+          }
           taskContainer.innerHTML += `
       <div class="content-task">
       <label>
@@ -55,12 +65,15 @@ export default class UI {
         <input type="text" value="${taskName}" />
       </div>
 
+      <div class="dueDate">
+        ${dueDate}
+      </div>
+
       <div class="actions">
         <button class="edit">Edit</button>
         <button class="delete"  
         data-project="${projectName}" 
-        data-task="${taskName}" 
-        data-index="${project.tasks.indexOf(task)}">Delete</button>
+        data-task="${taskName}" >Delete</button>
       </div>
     </div>`;
         });
@@ -92,5 +105,17 @@ export default class UI {
     deleteButton.forEach((element) => {
       element.addEventListener("click", Storage.deleteTask);
     });
+  }
+  static displayModal() {
+    const modal = document.getElementById("taskModal");
+    const overlay = document.getElementById("overlay");
+    modal.classList.add("active");
+    overlay.classList.add("active");
+  }
+  static hideModal() {
+    const modal = document.getElementById("taskModal");
+    const overlay = document.getElementById("overlay");
+    modal.classList.remove("active");
+    overlay.classList.remove("active");
   }
 }

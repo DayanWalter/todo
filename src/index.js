@@ -10,6 +10,13 @@ UI.renderButton();
 UI.deleteButton();
 
 // Eventlistener
+
+const modalButton = document.getElementById("addTaskModal");
+modalButton.addEventListener("click", UI.displayModal);
+
+const overlay = document.getElementById("overlay");
+overlay.addEventListener("click", UI.hideModal);
+
 const addProjectButton = document.getElementById("addProjectButton");
 addProjectButton.addEventListener("click", Storage.addProject);
 

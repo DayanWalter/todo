@@ -44,8 +44,10 @@ export default class Storage {
 
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
-    let inputTaskName = document.getElementById("taskName").value;
-    let inputTaskDescription = document.getElementById("taskDescription").value;
+    let inputTaskName = document.getElementById("taskName").value.trim();
+    let inputTaskDescription = document
+      .getElementById("taskDescription")
+      .value.trim();
     let inputTaskDate = document.getElementById("taskDate").value;
     let inputTaskPriority = document.getElementById("taskPriority").value;
     let inputTaskProject = document.getElementById("taskProject").value;

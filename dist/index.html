@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo-App</title>
-  <link rel="icon" href="favicon.ico"><script defer src="bundle.87b16ba4427342568eac.js"></script></head>
+  <link rel="icon" href="favicon.ico"><script defer src="bundle.3da91ab600000c1da4a8.js"></script></head>
   <body>
     <div class="site">
       <header class="header">
@@ -76,7 +76,7 @@
         <div class="content">
           <h3 id="projectTitle">Project Title</h3>
 
-          <button class="content-new-task" title="New Task">
+          <button id="addTaskModal" class="content-new-task" title="New Task">
             <i class="fa-solid fa-plus"></i>New Task
           </button>
           <div class="content-task-container" id="taskContainer">
@@ -91,34 +91,8 @@
                 <input type="text" value="Example Task" />
               </div>
 
-              <div class="actions">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
-            <div class="content-task">
-              <label>
-                <input type="checkbox" />
-                <span class="bubble task"></span>
-              </label>
-
-              <div class="content-task-title">
-                <input type="text" value="Wash the dishes" />
-              </div>
-
-              <div class="actions">
-                <button class="edit">Edit</button>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
-            <div class="content-task">
-              <label>
-                <input type="checkbox" />
-                <span class="bubble task"></span>
-              </label>
-
-              <div class="content-task-title">
-                <input type="text" value="Pet a cat" />
+              <div class="dueDate">
+                <input type="date" />
               </div>
 
               <div class="actions">
@@ -136,7 +110,7 @@
           <i class="fa-brands fa-github"></i>
         </a>
       </footer>
-      <div class="modal active" id="addTaskModal">
+      <div class="modal" id="taskModal">
         <form class="add-task-form" id="addTaskForm">
           <h3>Add new Task</h3>
           <input
