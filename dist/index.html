@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo-App</title>
-  <link rel="icon" href="favicon.ico"><script defer src="bundle.e946f8b1122b13bc41bd.js"></script></head>
+  <link rel="icon" href="favicon.ico"><script defer src="bundle.87b16ba4427342568eac.js"></script></head>
   <body>
     <div class="site">
       <header class="header">
@@ -74,12 +74,12 @@
           </div>
         </div>
         <div class="content">
-          <h3>Project Title</h3>
+          <h3 id="projectTitle">Project Title</h3>
 
           <button class="content-new-task" title="New Task">
             <i class="fa-solid fa-plus"></i>New Task
           </button>
-          <div class="content-task-container">
+          <div class="content-task-container" id="taskContainer">
             <!-- Example Tasks -->
             <div class="content-task">
               <label>
@@ -136,7 +136,7 @@
           <i class="fa-brands fa-github"></i>
         </a>
       </footer>
-      <div class="modal" id="addTaskModal">
+      <div class="modal active" id="addTaskModal">
         <form class="add-task-form" id="addTaskForm">
           <h3>Add new Task</h3>
           <input
@@ -150,14 +150,14 @@
 
           <input
             type="text"
-            id="description"
+            id="taskDescription"
             placeholder="Description"
             required
             maxlength="100"
           />
-          <input type="date" id="date" required />
+          <input type="date" id="taskDate" required />
 
-          <select name="priority">
+          <select name="priority" id="taskPriority">
             <option value="priority" selected hidden disabled>
               Choose Priority
             </option>
@@ -166,7 +166,15 @@
             <option value="High">High</option>
           </select>
 
-          <button class="add-new-task-btn" type="submit">Submit</button>
+          <select name="project" id="taskProject">
+            <option value="project" selected hidden disabled>
+              Choose Project
+            </option>
+          </select>
+
+          <button class="add-new-task-btn" id="addTaskButton" type="submit">
+            Submit
+          </button>
         </form>
       </div>
       <div class="overlay" id="overlay"></div>

@@ -1,3 +1,5 @@
+import Storage from "./Storage";
+
 export default class UI {
   //get items from Storage and display them in the UI
 
@@ -5,15 +7,18 @@ export default class UI {
   static displayProjects() {
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
     const projectContainer = document.getElementById("projectContainer");
+    const taskProjectModal = document.getElementById("taskProject");
+
     projectContainer.innerHTML = "";
+    taskProjectModal.innerHTML = "";
 
     projects.forEach((project) => {
       let projectName = project.name;
 
       projectContainer.innerHTML += `
-      <div class="sidebar-bottom-container-project">
+      <div class="sidebar-bottom-container-project" value="${projectName}">
       <i class="fa-solid fa-list-check"></i>
-      <input type="text" value="${projectName}" readonly />
+      <input type="text" value="${projectName}" class="project-title"readonly/>
 
       <button title="Delete Project" class="delete-project-button" data-index="${projects.indexOf(
         project
@@ -21,6 +26,71 @@ export default class UI {
         <i class="fa-regular fa-circle-xmark"></i>
       </button>
     </div>`;
+
+      taskProjectModal.innerHTML += `  
+    <option value="${projectName}">
+      ${projectName}
+    </option>`;
+    });
+  }
+  static displayTasks(projectName) {
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    const taskContainer = document.getElementById("taskContainer");
+    taskContainer.innerHTML = "";
+
+    projects.forEach((project) => {
+      if (project.name === projectName) {
+        project.tasks.forEach((task) => {
+          const taskName = task.name;
+
+          taskContainer.innerHTML += `
+      <div class="content-task">
+      <label>
+        <input type="checkbox" />
+        <span class="bubble task"></span>
+      </label>
+
+      <div class="content-task-title">
+      
+        <input type="text" value="${taskName}" />
+      </div>
+
+      <div class="actions">
+        <button class="edit">Edit</button>
+        <button class="delete"  
+        data-project="${projectName}" 
+        data-task="${taskName}" 
+        data-index="${project.tasks.indexOf(task)}">Delete</button>
+      </div>
+    </div>`;
+        });
+      }
+    });
+  }
+
+  static displayProjectInTitle(e) {
+    const value = e.currentTarget.querySelector("input[type='text']").value;
+    const projectTitle = document.getElementById("projectTitle");
+    projectTitle.innerHTML = value;
+
+    UI.displayTasks(value);
+    UI.deleteButton();
+  }
+
+  static renderButton() {
+    const displayProjectsInTitle = document.querySelectorAll(
+      ".sidebar-bottom-container-project"
+    );
+
+    displayProjectsInTitle.forEach((element) => {
+      element.addEventListener("click", UI.displayProjectInTitle);
+    });
+  }
+  static deleteButton() {
+    const deleteButton = document.querySelectorAll(".delete");
+
+    deleteButton.forEach((element) => {
+      element.addEventListener("click", Storage.deleteTask);
     });
   }
 }
