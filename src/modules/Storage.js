@@ -26,7 +26,6 @@ export default class Storage {
     UI.displayAddProject();
     UI.renderButton();
   }
-
   static deleteProject(e) {
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
@@ -58,7 +57,7 @@ export default class Storage {
     let inputTaskDate = document.getElementById("taskDate").value;
     let inputTaskPriority = document.getElementById("taskPriority").value;
     let inputTaskProject = document.getElementById("projectTitle").innerHTML;
-    console.log(inputTaskProject);
+
     let selectedProjectIndex = projects.findIndex(
       (project) => project.name === inputTaskProject
     );
