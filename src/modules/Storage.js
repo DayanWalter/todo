@@ -11,26 +11,33 @@ export default class Storage {
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
     let inputProjectName = document.getElementById("projectName").value;
+
+    if (projects.some((project) => project.name === inputProjectName)) {
+      alert("This project already exists. Choose another name, please.");
+      return;
+    }
     const project = new Project(inputProjectName);
 
     projects.push(project);
 
     localStorage.setItem("projects", JSON.stringify(projects));
 
-    UI.displayProjects();
-    // UI.displayTasks();
+    UI.displayProjects(inputProjectName);
+    UI.displayAddProject();
     UI.renderButton();
   }
 
   static deleteProject(e) {
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
     if (e.target.closest(".delete-project-button")) {
       const index = parseInt(
         e.target.closest(".delete-project-button").getAttribute("data-index")
       );
 
-      let projects = JSON.parse(localStorage.getItem("projects")) || [];
       if (index >= 0 && index < projects.length) {
         projects.splice(index, 1);
+
         localStorage.setItem("projects", JSON.stringify(projects));
 
         UI.displayProjects();
@@ -50,8 +57,8 @@ export default class Storage {
       .value.trim();
     let inputTaskDate = document.getElementById("taskDate").value;
     let inputTaskPriority = document.getElementById("taskPriority").value;
-    let inputTaskProject = document.getElementById("taskProject").value;
-
+    let inputTaskProject = document.getElementById("projectTitle").innerHTML;
+    console.log(inputTaskProject);
     let selectedProjectIndex = projects.findIndex(
       (project) => project.name === inputTaskProject
     );
@@ -73,12 +80,12 @@ export default class Storage {
       UI.displayTasks(inputTaskProject);
       UI.renderButton();
       UI.deleteButton();
+      UI.hideModal();
     } else {
       console.error("Selected project not found");
     }
   }
   static deleteTask(e) {
-    const index = parseInt(e.target.getAttribute("data-index"));
     const projectName = e.target.getAttribute("data-project");
     const taskName = e.target.getAttribute("data-task");
 

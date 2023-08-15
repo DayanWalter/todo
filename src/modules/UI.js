@@ -4,14 +4,12 @@ import Storage from "./Storage";
 export default class UI {
   //get items from Storage and display them in the UI
 
-  //Display Projects in ProjectContainer
   static displayProjects() {
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
     const projectContainer = document.getElementById("projectContainer");
-    const taskProjectModal = document.getElementById("taskProject");
+    const projectTitle = document.getElementById("projectTitle");
 
     projectContainer.innerHTML = "";
-    taskProjectModal.innerHTML = "";
 
     projects.forEach((project) => {
       let projectName = project.name;
@@ -27,11 +25,12 @@ export default class UI {
         <i class="fa-regular fa-circle-xmark"></i>
       </button>
     </div>`;
+      projectTitle.innerHTML = projectName;
 
-      taskProjectModal.innerHTML += `  
-    <option value="${projectName}">
-      ${projectName}
-    </option>`;
+      //   taskProjectModal.innerHTML += `
+      // <option value="${projectName}">
+      //   ${projectName}
+      // </option>`;
     });
   }
   static displayTasks(projectName) {
@@ -43,9 +42,6 @@ export default class UI {
       if (project.name === projectName) {
         project.tasks.forEach((task) => {
           const taskName = task.name;
-
-          console.log(task.dueDate);
-
           let dueDate = task.dueDate;
 
           if (task.dueDate !== "") {
@@ -53,8 +49,9 @@ export default class UI {
           } else {
             dueDate = "No date added";
           }
+
           taskContainer.innerHTML += `
-      <div class="content-task">
+          <div class="content-task">
       <label>
         <input type="checkbox" />
         <span class="bubble task"></span>
@@ -62,7 +59,7 @@ export default class UI {
 
       <div class="content-task-title">
       
-        <input type="text" value="${taskName}" />
+        <input type="text" value="${taskName}" readonly/>
       </div>
 
       <div class="dueDate">
@@ -70,17 +67,19 @@ export default class UI {
       </div>
 
       <div class="actions">
-        <button class="edit">Edit</button>
+        <button class="edit"
+        data-project="${projectName}" 
+        data-task="${taskName}">Edit</button>
         <button class="delete"  
         data-project="${projectName}" 
         data-task="${taskName}" >Delete</button>
       </div>
-    </div>`;
+      </div>
+    `;
         });
       }
     });
   }
-
   static displayProjectInTitle(e) {
     const value = e.currentTarget.querySelector("input[type='text']").value;
     const projectTitle = document.getElementById("projectTitle");
@@ -89,7 +88,6 @@ export default class UI {
     UI.displayTasks(value);
     UI.deleteButton();
   }
-
   static renderButton() {
     const displayProjectsInTitle = document.querySelectorAll(
       ".sidebar-bottom-container-project"
@@ -117,5 +115,9 @@ export default class UI {
     const overlay = document.getElementById("overlay");
     modal.classList.remove("active");
     overlay.classList.remove("active");
+  }
+  static displayAddProject() {
+    const projectForm = document.getElementById("projectForm");
+    projectForm.classList.toggle("active");
   }
 }

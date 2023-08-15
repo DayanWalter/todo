@@ -15,7 +15,7 @@
       </header>
       <main class="main">
         <div class="sidebar">
-          <div class="sidebar-top">
+          <!-- <div class="sidebar-top">
             <div class="sidebar-top-link">
               <i class="fa-solid fa-inbox" title="Inbox"></i>
               <div class="inbox">Inbox</div>
@@ -28,13 +28,17 @@
               <i class="fa-solid fa-calendar-week" title="Next Week"></i>
               <div class="next-week">Next Week</div>
             </div>
-          </div>
+          </div> -->
           <div class="sidebar-bottom">
             <div class="sidebar-bottom-header">
               <h3>Projects</h3>
-              <i class="fa-solid fa-plus" title="New Project"></i>
+              <i
+                class="fa-solid fa-plus"
+                title="New Project"
+                id="showProjectForm"
+              ></i>
             </div>
-            <form class="project-form active">
+            <form id="projectForm" class="project-form">
               <input
                 type="text"
                 id="projectName"
@@ -57,24 +61,12 @@
                   <i class="fa-regular fa-circle-xmark"></i>
                 </button>
               </div>
-              <!-- <div class="sidebar-bottom-container-project">
-                <i class="fa-solid fa-list-check"></i>
-                <p>Another Example</p>
-              </div>
-              <div class="sidebar-bottom-container-project">
-                <i class="fa-solid fa-list-check"></i>
-                <p>A Very Very Long Example</p>
-              </div>
-              <div class="sidebar-bottom-container-project">
-                <i class="fa-solid fa-list-check"></i>
-                <p>Shorty</p>
-              </div> -->
               <!-- End Of Example Projects -->
             </div>
           </div>
         </div>
-        <div class="content">
-          <h3 id="projectTitle">Project Title</h3>
+        <div class="content" id="buttonContainer">
+          <h3 id="projectTitle"></h3>
 
           <button id="addTaskModal" class="content-new-task" title="New Task">
             <i class="fa-solid fa-plus"></i>New Task
@@ -140,11 +132,11 @@
             <option value="High">High</option>
           </select>
 
-          <select name="project" id="taskProject">
+          <!-- <select name="project" id="taskProject">
             <option value="project" selected hidden disabled>
               Choose Project
             </option>
-          </select>
+          </select> -->
 
           <button class="add-new-task-btn" id="addTaskButton" type="submit">
             Submit
